@@ -7,23 +7,23 @@
         }
     }
     if (isset($_POST['password'])) {
-        $password = $_POST['password'];
-        if ($password == '') {
-            unset($password);
+        $pass = $_POST['password'];
+        if ($pass == '') {
+            unset($pass);
         }
     }
-    if (empty($login) or empty($password))
+    if (empty($login) or empty($pass))
     {
         exit("Вы ввели не всю информацию, вернитесь назад и заполните все поля!");
     }
 
     $login = stripslashes($login);
     $login = htmlspecialchars($login);
-    $password = stripslashes($password);
-    $password = htmlspecialchars($password);
+    $pass = stripslashes($pass);
+    $pass = htmlspecialchars($pass);
 
     $login = trim($login);
-    $password = trim($password);
+    $pass = trim($pass);
 
     include("db/db.php");
     $query = "SELECT * FROM user WHERE login='$login'";
@@ -32,7 +32,7 @@
     if (empty($myrow['password'])) {
         exit("Извините, введённый вами login или пароль неверный.");
     } else {
-        if (password_verify($password, $myrow['password'])) {
+        if (password_verify($pass, $myrow['password'])) {
             $_SESSION['login'] = $myrow['login'];
             $_SESSION['id'] = $myrow['id']; 
             echo "Вы успешно вошли на сайт! <a href='index.php'>Главная страница</a>";
