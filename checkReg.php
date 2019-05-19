@@ -26,12 +26,13 @@
     $password = trim($password);
 
     include("db/db.php");
-
-    $result = mysqli_query("SELECT * FROM user WHERE login='$login'", $db); 
+    $query = "SELECT * FROM user WHERE login='$login'";
+    $result = $mysqli->query($query);
+    $myrow = mysqli_fetch_array($result);
     if (empty($myrow['password'])) {
         exit("Извините, введённый вами login или пароль неверный.");
     } else {
-        if ($myrow['password'] == $password) {
+        if (password_verify($password, $myrow['password'])) {
             $_SESSION['login'] = $myrow['login'];
             $_SESSION['id'] = $myrow['id']; 
             echo "Вы успешно вошли на сайт! <a href='index.php'>Главная страница</a>";

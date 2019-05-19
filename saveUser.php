@@ -50,15 +50,19 @@
 
     $login = trim($login);
     $password = trim($password);
-
+    date_default_timezone_set('UTC');
+    $created = date_create()->format('Y-m-d H:i:s');
+    $hash = password_hash($password, PASSWORD_DEFAULT);
     include("db/db.php"); 
-
-    $result = mysqli_query("SELECT id FROM user WHERE login='$login'", $db);
+    $query = "SELECT id FROM user WHERE login='$login'";
+    $result = $mysqli->query($query);
     $myrow = mysqli_fetch_array($result);
     if (!empty($myrow['id'])) {
         exit("Данный логин уже зарегистрирован.");
     }
-    $saveResult = mysql_query("INSERT INTO user (login,password) VALUES('$login','$password')");
+    $query = "INSERT INTO user (login, password, email, phoneNumber, created, description, fullname) 
+    VALUES('$login','$hash', '$email', '$phone', '$created', '$description', '$fullname')";
+    $saveResult = $mysqli->query($query);
 
     if ($saveResult == 'TRUE') {
         echo "Вы успешно зарегистрированы! Теперь вы можете зайти на сайт. <a href='index.php'>Главная страница</a>";
