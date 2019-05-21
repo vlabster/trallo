@@ -2,10 +2,10 @@
 <html>
     <head>
         <title>Регистрация</title>
-    </head>
-    <body>
         <link rel="stylesheet" href="front/webix/codebase/webix.css">    
         <script src="front/webix/codebase/webix.js"></script>
+    </head>
+    <body>
         <script src="frontend/regForm.js"></script>
         <!-- <h2>Регистрация</h2>
         <form action="saveUser.php" method="post" name="reg">
