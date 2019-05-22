@@ -1,18 +1,13 @@
-webix.ready(function() {
-    webix.ui ({
-        view:"form",
-	    id:"myForm",
-	    container: "areaA",
-	    width: 350,
-	    elements: [
-            { view: "text", label: "Логин", name: "login" },
-            { view: "text", label: "Пароль", name: "password", type: "password" },
-            { view: "text", label: "ФИО", name: "fullname" },
-            { view: "text", label: "Номер телефона", name: "phone" },
-            { view: "text", label: "Электронная почта", name: "email" },
-            { view: "text", label: "Описание", name: "description" },
-            // { view: "checkbox", labelRight: "I accept terms of use", name: "accept" },
-            { view: "button", value: "Submit", width: 150, align: "center", click: submit }
-	    ]
-    });
+webix.ui({
+    view:"form", 
+id:"log_form",
+width:300,
+elements:[
+{ view:"text", label:"Email", name:"email"},
+{ view:"text", type:"password", label:"Password", name:"password"},
+{ margin:5, cols:[
+    { view:"button", value:"Login" , css:"webix_primary"},
+    { view:"button", value:"Cancel"}
+]}
+]
 });
