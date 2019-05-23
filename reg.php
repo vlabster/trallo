@@ -2,12 +2,7 @@
 <html>
     <head>
         <title>Регистрация</title>
-        <link rel="stylesheet" href="front/webix/codebase/webix.css">    
-        <script src="front/webix/codebase/webix.js"></script>
-    </head>
-    <body>
-        <script src="frontend/regForm.js"></script>
-        <!-- <h2>Регистрация</h2>
+        <h2>Регистрация</h2>
         <form action="saveUser.php" method="post" name="reg">
             <p>
                 <label>ФИО:<br /></label>
@@ -36,6 +31,5 @@
             <p>
                 <input type="submit" name="submit" value="Зарегистрироваться" />
             </p>
-        </form> -->
+        </form>
     </body>
-</html>
