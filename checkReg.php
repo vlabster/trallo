@@ -35,7 +35,7 @@
         if (password_verify($pass, $myrow['password'])) {
             $_SESSION['login'] = $myrow['login'];
             $_SESSION['id'] = $myrow['id']; 
-            echo "Вы успешно вошли на сайт! <a href='index.php'>Главная страница</a>";
+            require_once("boards.php");
         } else {
             exit("Извините, введённый вами login или пароль неверный.");
         }
