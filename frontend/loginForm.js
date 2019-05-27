@@ -1,6 +1,8 @@
 function submit() {
     webix.message(JSON.stringify($$("logForm").getValues(), null, 2));
-    webix.ajax().post("checkReg.php", $$("logForm").getValues());
+    webix.ajax().post("checkReg.php", $$("logForm").getValues(), function(request) {
+        location.href = "boards.php";
+    });
 }
 
 webix.ui({
