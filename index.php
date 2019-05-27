@@ -4,35 +4,11 @@
 <html>
     <head>
     <title>Главная страница</title>
+        <link rel="stylesheet" href="front/webix/codebase/webix.css" type="text/css" charset="utf-8">
+        <script src="front/webix/codebase/webix.js" type="text/javascript"></script>
     </head>
     <body>
-        <h2>Главная страница</h2>
-        <form action="checkReg.php" method="post">
-            <p>
-                <label>Логин:<br></label>
-                <input name="login" type="text" size="15" maxlength="15">
-            </p>
-            <p>
-                <label>Пароль:<br></label>
-                <input name="password" type="password" size="15" maxlength="15">
-            </p>
-            <p>
-                <input type="submit" name="submit" value="Войти">
-                <br>
-                <a href="reg.php">Зарегистрироваться</a> 
-            </p>
-        </form>
-        <br>
-        <?php
-            if (empty($_SESSION['login']) or empty($_SESSION['id']))
-            {
-                echo "Вы вошли на сайт, как гость<br>
-                <a href='#'>Эта ссылка  доступна только зарегистрированным пользователям</a>";
-            }
-            else
-            {
-                
-            }
-        ?>
+        <div id="areaA"></div>
+        <script src="frontend\loginForm.js" type="text/javascript"></script>
     </body>
 </html>
