@@ -1,13 +1,13 @@
 <?php
     session_start();
-    if (isset($_POST['login'])) {
-        $login = $_POST['login'];
+    if (isset($_REQUEST['login'])) {
+        $login = $_REQUEST['login'];
         if ($login == '') {
             unset($login);
         }
     }
-    if (isset($_POST['password'])) {
-        $pass = $_POST['password'];
+    if (isset($_REQUEST['password'])) {
+        $pass = $_REQUEST['password'];
         if ($pass == '') {
             unset($pass);
         }
@@ -30,14 +30,14 @@
     $result = $mysqli->query($query);
     $myrow = mysqli_fetch_array($result);
     if (empty($myrow['password'])) {
-        exit("Извините, введённый вами login или пароль неверный.");
+        echo(0);
     } else {
         if (password_verify($pass, $myrow['password'])) {
             $_SESSION['login'] = $myrow['login'];
             $_SESSION['id'] = $myrow['id']; 
-            require_once("boards.php");
+            echo(1);
         } else {
-            exit("Извините, введённый вами login или пароль неверный.");
+            echo(0);
         }
     }
 ?>
