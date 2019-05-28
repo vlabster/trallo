@@ -1,14 +1,14 @@
 function submit() {
     webix.message(JSON.stringify($$("logForm").getValues(), null, 2));
     webix.ajax("checkReg.php", $$("logForm").getValues(), function (data) {
-        if (data == 1) {
-            location.href = "boards.php";
-        }
-        else if (data == 0) {
-            webix.message("Неверный логин или пароль")
+        if (data == 0) {
+            webix.message("Неверный логин или пароль");
         }
         else {
-            webix.message(data);
+            let result = JSON.parse(data);
+            webix.message(`http://trallo/boardList.php?login=${result.login}&id=${result.id}`);
+            location.href = `http://trallo/boardList.php?login=${result.login}&id=${result.id}`;
+            //window.open(`http://trallo/boardList.php?login=${result.login}&board=${result.id}`);
         }
     }); 
 }
