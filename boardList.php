@@ -99,7 +99,7 @@
             var getData = '<?php echo $boardsJson; ?>';
             //[{"id":1,"title":"The Shawshank Redemption","year":"1994","votes":"678,79","rating":"9,2","rank":"1"}];
         </script>
-        <script src="frontend\boardList.js" type="text/javascript"></script>
+        
         <textarea id="template_container" rows="5" cols="60" style="margin-left:20px">
         <div class='overall'>
             <div class='rank'>#rank#.</div>
@@ -107,5 +107,8 @@
             <div class='year'>#year#</div>
         </div>
         </textarea>
+        <div id="areaB">
+        <script src="frontend\boardList.js" type="text/javascript"></script>
+        </div>
     </body>
 </html>
