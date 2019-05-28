@@ -35,7 +35,14 @@
         if (password_verify($pass, $myrow['password'])) {
             $_SESSION['login'] = $myrow['login'];
             $_SESSION['id'] = $myrow['id']; 
-            echo(1);
+            $id = $_SESSION['id'];
+            $login = $_SESSION['login']; 
+            $jsonRes = array("id" => $id, "login" => "$login");
+            //include_once("boardList.php");
+            //header('Content-Type: application/json');
+            // $jsonRes = '"{'id':'$id','login':'$login'}"';
+            // $js = "{" + '"id":' + string($id) + "," + '"login":' + string($login) + '}'; 
+            echo json_encode($jsonRes);
         } else {
             echo(0);
         }
