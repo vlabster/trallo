@@ -70,7 +70,6 @@
     <title>Доски</title>
     <body>
         <?php
-            $baseUrl = "http://trallo/cards.php/";
             $userId = $_REQUEST['id'];
             include("db/db.php");
             $query = "select board.id, board.created, board.name from board 
@@ -99,8 +98,7 @@
             var getData = '<?php echo $boardsJson; ?>';
             //[{"id":1,"title":"The Shawshank Redemption","year":"1994","votes":"678,79","rating":"9,2","rank":"1"}];
         </script>
-        
-        <textarea id="template_container" rows="5" cols="60" style="margin-left:20px">
+        <textarea id="template_container" rows="5" cols="60" style="clip: rect(0, 0, 0, 0); position: absolute;">
         <div class='overall'>
             <div class='rank'>#rank#.</div>
             <div class='title'>#title#</div>
