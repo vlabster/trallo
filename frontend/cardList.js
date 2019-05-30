@@ -8,18 +8,19 @@ webix.ready(function () {
                 paddingX: 10,
                 margin: 7,
                 cols: [
-                    { view: "label", label: "You can add and remove cards in Kanban Board" },
+                    { view: "label", label: "Вы можете добавить или удалить карточку" },
                     {
-                        view: "button", type: "danger", label: "Remove selected", width: 150, click: () => {
+                        view: "button", type: "danger", label: "Удалить карточку", width: 200, click: () => {
                             var id = $$("myBoard").getSelectedId();
                             if (!id) {
-                                return webix.alert("Please selected a card that you want to remove!");
+                                return webix.alert("Выберите карточку, которую вы хотите удалить!");
                             }
                             $$("myBoard").remove(id);
+                            webix.ajax(`deleteCard.php?id=${id}`);
                         }
                     },
                     {
-                        view: "button", type: "form", label: "Add new card", width: 150, click: () => {
+                        view: "button", type: "form", label: "Добавить карточку", width: 200, click: () => {
                             $$("myBoard").showEditor();
                         }
                     }

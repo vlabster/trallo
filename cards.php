@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="front/webix/codebase/webix.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="front\kanban\codebase\kanban.css" type="text/css" charset="utf-8">
     </head>
-    <title>qqw</title>
+    <title>Доска</title>
     <body>
         <?php
             $userId = $_REQUEST['id'];
