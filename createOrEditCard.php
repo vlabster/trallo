@@ -40,8 +40,7 @@
         include("db/db.php");
         $query="UPDATE card SET status = '$status', text = '$text' WHERE card.id = '$cardId'";
         $res = $mysqli->query($query);//$mysqli->real_query($query);
-        $qqw = $mysqli->error;
-        $sdf = "1";
+        //$qqw = $mysqli->error;
         //UPDATE...
     }
     // $list
