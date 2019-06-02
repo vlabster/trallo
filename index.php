@@ -9,7 +9,7 @@
     </head>
     <body>
         <div>
-            <script src="frontend\start.js" type="text/javascript"></script>
+            <script src="frontend\startForm.js" type="text/javascript"></script>
         </div>
     </body>
 </html>
