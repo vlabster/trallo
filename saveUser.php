@@ -1,42 +1,53 @@
 <?php
-    if (isset($_POST['login'])) {
-        $login = $_POST['login'];
+    if (isset($_REQUEST['login'])) {
+        $login = $_REQUEST['login'];
         if ($login == '') {
             unset($login);
         }
     }
-    if (isset($_POST['password'])) {
-        $password = $_POST['password'];
+    if (isset($_REQUEST['password'])) {
+        $password = $_REQUEST['password'];
         if ($password == '') {
             unset($password);
         }
     }
-    if (isset($_POST['email'])) {
-        $email = $_POST['email'];
+    if (isset($_REQUEST['passwordRep'])) {
+        $passwordRep = $_REQUEST['passwordRep'];
+        if ($passwordRep == '') {
+            unset($passwordRep);
+        }
+    }
+    if (isset($_REQUEST['email'])) {
+        $email = $_REQUEST['email'];
         if ($email == '') {
             unset($email);
         }
     }
-    if (isset($_POST['phone'])) {
-        $phone = $_POST['phone'];
+    if (isset($_REQUEST['phone'])) {
+        $phone = $_REQUEST['phone'];
         if ($phone == '') {
             unset($phone);
         }
     }
-    if (isset($_POST['description'])) {
-        $description = $_POST['description'];
+    if (isset($_REQUEST['description'])) {
+        $description = $_REQUEST['description'];
         if ($description == '') {
             unset($description);
         }
     }
-    if (isset($_POST['fullname'])) {
-        $fullname = $_POST['fullname'];
+    if (isset($_REQUEST['fullname'])) {
+        $fullname = $_REQUEST['fullname'];
         if ($fullname == '') {
             unset($fullname);
         }
     }
-    if (empty($login) or empty($password) or empty($email) or empty($phone) or empty($fullname)) {
-        exit("Вы ввели не всю информацию, вернитесь назад и заполните все поля!");
+    if (empty($login) or empty($password) or empty($passwordRep) or empty($email) or empty($phone) or empty($fullname)) {
+        echo 0;
+        exit();
+    }
+    if (strcasecmp($password , $passwordRep) != 0) {
+        echo 1;
+        exit();
     }
     //проверка на теги и скрипты
     $login = stripslashes($login);
@@ -58,15 +69,16 @@
     $result = $mysqli->query($query);
     $myrow = mysqli_fetch_array($result);
     if (!empty($myrow['id'])) {
-        exit("Данный логин уже зарегистрирован.");
+        echo 2;
+        exit();
     }
     $query = "INSERT INTO user (login, password, email, phoneNumber, created, description, fullname) 
     VALUES('$login','$hash', '$email', '$phone', '$created', '$description', '$fullname')";
     $saveResult = $mysqli->query($query);
 
     if ($saveResult == 'TRUE') {
-        echo "Вы успешно зарегистрированы! Теперь вы можете зайти на сайт. <a href='index.php'>Главная страница</a>";
+        echo 4;
     } else {
-        echo "Ошибка! Вы не зарегистрированы.";
+        echo 3;
     }
 ?>

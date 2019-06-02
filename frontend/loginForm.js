@@ -1,4 +1,4 @@
-function submit() {
+function submitLog() {
     webix.message(JSON.stringify($$("logForm").getValues(), null, 2));
     webix.ajax("checkReg.php", $$("logForm").getValues(), function (data) {
         if (data == 0) {
@@ -22,7 +22,7 @@ webix.ui({
         { view:"text", label:"Логин", name:"login"},
         { view:"text", type:"password", label:"Пароль", name:"password"},
         { margin:5, cols:[
-            { view:"button", value:"Войти" , css:"webix_primary", click: submit },
+            { view:"button", value:"Войти" , css:"webix_primary", click: submitLog },
             { view:"button", value:"Отмена"}
         ]}
     ]

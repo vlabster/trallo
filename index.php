@@ -8,7 +8,8 @@
         <script src="front/webix/codebase/webix.js" type="text/javascript"></script>
     </head>
     <body>
-        <div id="areaA" style = "margin-top: 15%; margin-left: 40%"></div>
-        <script src="frontend\loginForm.js" type="text/javascript"></script>
+        <div>
+            <script src="frontend\start.js" type="text/javascript"></script>
+        </div>
     </body>
 </html>
