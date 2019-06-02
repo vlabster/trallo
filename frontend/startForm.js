@@ -41,7 +41,7 @@ function submitLog() {
 }
 
 webix.ui({
-    type: "space", width: 400,
+    type: "space", width: 1600, paddingX: 600, container: "areaA", 
     rows: [
         {
             type: "clean",
@@ -133,8 +133,8 @@ webix.ui({
                     ]
                 }
             ]
-        }
-    ]
+        },
+    ],
 });
 
 // $$("formView").bind($$("listView"));

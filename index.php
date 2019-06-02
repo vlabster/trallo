@@ -8,7 +8,7 @@
         <script src="front/webix/codebase/webix.js" type="text/javascript"></script>
     </head>
     <body>
-        <div>
+        <div id = "areaA">
             <script src="frontend\startForm.js" type="text/javascript"></script>
         </div>
     </body>
