@@ -16,7 +16,7 @@ webix.ready(function () {
                                 return webix.alert("Выберите карточку, которую вы хотите удалить!");
                             }
                             $$("myBoard").remove(id);
-                           // webix.ajax(`deleteCard.php?id=${id}`);
+                            webix.ajax(`deleteCard.php?id=${id}`);
                         }
                     },
                     {
@@ -45,11 +45,20 @@ webix.ready(function () {
                         webix.ajax("createOrEditCard.php", result);
                         //webix.message(JSON.stringify(editor.getForm().getValues()));
                     },
-                    onListAfterDrop: function(context, ev, list) {
-                        // webix.message(context);
-                        // webix.message(ev);
-                        // webix.message(list);
-                    },
+                    onListAfterDrop: function (dragContext,e,list){
+                        // item id
+                        var item = this.getItem(dragContext.start);
+                      
+                        // if we move an item from one list to another
+                        if(dragContext.from != dragContext.to){
+                          var status = dragContext.to.config.status;
+                          // show a message with new status and order
+                          webix.message("Item '"+item.text+"' was moved into '"+status+"' column to the "+item.$index +" position");
+                          webix.ajax(`dragCard.php?status=${status}&cardId=${dragContext.start}`);
+                        }
+                        else
+                          webix.message("Item '"+item.text+"' was moved to the "+item.$index +" position");
+                      },
                 },
                 cols: [
                     {
