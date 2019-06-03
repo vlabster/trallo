@@ -34,6 +34,7 @@
                             break;
                     }
                     $cards['text'] = $row['text']; 
+                    $cards['color'] = $row['color'];
                     array_push($fin, $cards);
                 }
             }

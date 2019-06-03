@@ -125,6 +125,12 @@ webix.ready(function () {
                 ],
                 editor: true,
                 data: getData,
+                colors: [
+                    { id: 0, value: "Стандартный", color: "#1CA1C1" },
+                    { id: 1, value: "Незначительно", color: "green" },
+                    { id: 2, value: "Средне", color: "orange" },
+                    { id: 3, value: "Срочно", color: "red" }
+                ]
                 //tags: tags_set,
                 //users: users_set
             }

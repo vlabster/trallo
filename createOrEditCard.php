@@ -26,8 +26,9 @@
         $cardId = $_REQUEST['id'];
         $tags = $_REQUEST['tags'];
         $text = $_REQUEST['text'];
+        $color = $_REQUEST['color'];
         include("db/db.php");
-        $query="UPDATE card SET status = '$list', text = '$text' WHERE card.id = '$cardId'";
+        $query="UPDATE card SET status = '$list', text = '$text', color = '$color' WHERE card.id = '$cardId'";
         $res = $mysqli->query($query);
         //UPDATE...
     }
