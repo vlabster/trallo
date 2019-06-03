@@ -14,8 +14,18 @@ function clickCreate() {
   if (!!regexp.exec(url))
     userId = regexp.exec(url)[1];
   result.user_id = userId;
+  let checkBox = $$("popupCheckbox").getValue();
+  result.private = checkBox;
   webix.ajax("createBoard.php", result, function (data) {
-
+    if (data == 0) {
+      webix.message("Введите название карточки");
+    }
+    if (data == 1) {
+      $$("createBoardForm").clear();
+      $$("boardView").refresh();
+      let url = document.location.search;
+      location.href = `http://trallo/boardList.php${url}`;
+    }
   });
 }
 
@@ -31,7 +41,7 @@ webix.ui({
     width: 300,
     elements: [
       { view: "text", label: "Имя", name: "name", id: "popapLabel" },
-      { view: "checkbox", labelRight: "Приватная доска", checkValue: "on" },
+      { view: "checkbox", labelRight: "Приватная доска", id: "popupCheckbox" },
       {
         margin: 5, cols: [
           { view: "button", value: "Создать", css: "webix_primary", click: clickCreate },
@@ -69,6 +79,7 @@ webix.ui({
       ]
     },
     {
+      id: "boardView",
       container: "areaB",
       view: "dataview",
       width: 543,
@@ -78,7 +89,7 @@ webix.ui({
         width: 260,
         height: 90,
         template: function (obj) {
-          return "<div class='overall'><div class='rank'>" + obj.rank + ".</div><div class='title'>" + obj.title + "</div><div class='year'>" + obj.year + " year</div> </div>"
+          return "<div class='overall'><div class='rank'>" + obj.rank + ".</div><div class='title'>" + obj.title + "</div><div class='year'>" + obj.year + "</div> </div>"
         }
       },
       click: handler,
