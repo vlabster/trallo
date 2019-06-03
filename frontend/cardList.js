@@ -1,4 +1,49 @@
 webix.ready(function () {
+
+    function clickInvite() {
+        let url = document.location.search;
+        let result = $$("inviteUserForm").getValues();
+        let regexp = /board=([^&]+)/i;
+        let boardId = '';
+        if (!!regexp.exec(url))
+            boardId = regexp.exec(url)[1];
+        result.boardId = boardId;
+        webix.ajax("inviteUser.php", result, function (data) {
+            if (data == 0) {
+                webix.message("Пользователя с данным id не найдено");
+            }
+            if (data == 1) {
+                $$("inviteUserForm").clear();
+                webix.message("Пользователь добавлен к доске");
+            }
+            if (data == 2) {
+                $$("inviteUserForm").clear();
+                webix.message("Этот пользователь уже закреплён за данной доской");
+            }
+        });
+    }
+
+    webix.ui({
+        view: "popup",
+        id: "my_pop",
+        head: "inviteForm",
+        width: 300,
+        body: {
+            view: "form",
+            id: "inviteUserForm",
+            container: "areaA",
+            width: 300,
+            elements: [
+                { view: "text", label: "Имя", name: "name", id: "popapLabel" },
+                {
+                    margin: 5, cols: [
+                        { view: "button", value: "Пригласить", css: "webix_primary", click: clickInvite },
+                    ]
+                }
+            ]
+        }
+    });
+
     webix.ui({
         rows: [
             {
@@ -8,6 +53,7 @@ webix.ready(function () {
                 paddingX: 10,
                 margin: 7,
                 cols: [
+                    { view: "button", value: "Пригласить пользователя", width: 250, align: "left", popup: "my_pop" },
                     { view: "label", label: "Вы можете добавить или удалить карточку" },
                     {
                         view: "button", type: "danger", label: "Удалить карточку", width: 200, click: () => {
