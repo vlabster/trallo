@@ -11,8 +11,15 @@
         $tags = $_REQUEST['tags'];
         $board = $_REQUEST['board'];
         $userId = $_REQUEST['user_id'];
+        if (empty($_REQUEST['color']) != false) {
+            $color = "0";
+        }
+        else {
+            $color = $_REQUEST['color'];
+        }
         include("db/db.php");
-        $query = "INSERT INTO card (status, created, board, text, user) VALUES ('$list', '$date', '$board', '$text', '$userId');";
+        $query = "INSERT INTO card (status, created, board, text, user, color) 
+            VALUES ('$list', '$date', '$board', '$text', '$userId', '$color');";
         $res = $mysqli->query($query);
         //"CREATE ...."
     }
