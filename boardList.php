@@ -4,20 +4,6 @@
         <link rel="stylesheet" href="front/webix/codebase/webix.css" type="text/css" charset="utf-8">
         <script src="front/webix/codebase/webix.js" type="text/javascript"></script>
         <style>
-        .temp{
-            display:block;
-            width:700px;
-            height:400px;/*Длина:400px*/
-            margin:0 auto;
-            resize:vertical;
-            outline:none;/*Светящаяся рамка:убераем*/
-            border-width:2px;/*Ширина рамки:2px*/
-            border-radius:2px;/*Скругление углов:2px*/
-            font-size:18pt;/*Размер шрифта:18pt*/
-            text-align:center;/*Положение текста:по центру*/
-            background:#ecf0f1;
-            color:rgb(52, 73, 94);
-        }
         .movies .webix_dataview_item, .movies .webix_dataview_item.webix_selected{
             padding: 3px 2px;
             border-color: #fff;
@@ -82,7 +68,6 @@
                         where user.id = $userId";
             $mysqli->real_query($query);
             $res = $mysqli->store_result();
-            //include_once("boardList.php");
             if ($res) {
                 $fin = [];
                 $count = 1;
@@ -96,11 +81,10 @@
                 }
             }
             $boardsJson = json_encode($fin);
-            // echo json_encode($boards);
         ?>
         <script>
             var getData = '<?php echo $boardsJson; ?>';
-            //[{"id":1,"title":"The Shawshank Redemption","year":"1994","votes":"678,79","rating":"9,2","rank":"1"}];
+            //Пример данных: [{"id":1,"title":"The Shawshank Redemption","year":"1994","votes":"678,79","rating":"9,2","rank":"1"}];
         </script>
         <script src="frontend\boardList.js" type="text/javascript"></script>
     </body>

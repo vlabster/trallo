@@ -9,7 +9,7 @@
         $userId = $_REQUEST['user_id'];
         include("db/db.php");
         $query = "INSERT INTO board (created, name, private) VALUES ('$date', '$name', '$private');";
-        $res = $mysqli->query($query);//$mysqli->real_query($query);
+        $res = $mysqli->query($query);
         $query = "Select id from board where created IN (SELECT MAX(created) as time FROM board)";
         $res = $mysqli->query($query);
         if ($res) {
@@ -20,8 +20,5 @@
         $query = "INSERT INTO boardHasUser (user, board) VALUES ('$userId', '$boardId')";
         $res = $mysqli->query($query);
         echo 1;
-        //$qqw = $mysqli->error;
-        //$res = $mysqli->store_result();
-        //"CREATE ...."
     }  
 ?>

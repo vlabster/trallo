@@ -1,6 +1,5 @@
 function submitReg() {
     webix.message(JSON.stringify($$("regForm").getValues(), null, 2));
-    // $$("logForm").focus();
     webix.ajax("saveUser.php", $$("regForm").getValues(), function (data) {
         if (data == 0) {
             webix.message("Вы ввели не всю информацию");
@@ -18,9 +17,6 @@ function submitReg() {
             let result = JSON.parse(data);
             webix.message(`Вы успешно зарегестрированы!`);
             $$('regForm').clear();
-
-            //location.href = `http://trallo/boardList.php?login=${result.login}&id=${result.id}`;
-            //window.open(`http://trallo/boardList.php?login=${result.login}&board=${result.id}`);
         }
     });
 }
@@ -35,7 +31,6 @@ function submitLog() {
             let result = JSON.parse(data);
             webix.message(`http://trallo/boardList.php?login=${result.login}&id=${result.id}`);
             location.href = `http://trallo/boardList.php?login=${result.login}&id=${result.id}`;
-            //window.open(`http://trallo/boardList.php?login=${result.login}&board=${result.id}`);
         }
     });
 }
@@ -136,5 +131,3 @@ webix.ui({
         },
     ],
 });
-
-// $$("formView").bind($$("listView"));

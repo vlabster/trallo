@@ -3,7 +3,6 @@
     <head>
     <script src="front/webix/codebase/webix.js" type="text/javascript"></script>
     <script src="front\kanban\codebase\kanban.js" type="text/javascript"></script>
-    <!-- css files -->
     <link rel="stylesheet" href="front/webix/codebase/webix.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="front\kanban\codebase\kanban.css" type="text/css" charset="utf-8">
     </head>
@@ -35,8 +34,6 @@
                             break;
                     }
                     $cards['text'] = $row['text']; 
-                    //$cards['date'] = $row['created'];
-                    //$count++;
                     array_push($fin, $cards);
                 }
             }
@@ -44,7 +41,7 @@
         ?>
         <script>
             var getData = '<?php echo $cardsJson; ?>';
-            //[{ id:1, status:"new", text:"Test new authentification service", tags:[1,2,3], comments:[1,2,3] }]
+            //Пример данных: [{ id:1, status:"new", text:"Test new authentification service", tags:[1,2,3], comments:[1,2,3] }]
         </script>
         <script src="frontend\cardList.js" type="text/javascript"></script>
     </body>

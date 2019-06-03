@@ -16,5 +16,5 @@
     }
     include("db/db.php");
     $query="UPDATE card SET status = '$status' WHERE card.id = '$cardId'";
-    $res = $mysqli->query($query);//$mysqli->real_query($query);
+    $res = $mysqli->query($query);
 ?>
