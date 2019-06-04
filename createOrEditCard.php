@@ -12,7 +12,7 @@
         $board = $_REQUEST['board'];
         $userId = $_REQUEST['user_id'];
         if (empty($_REQUEST['color']) != false) {
-            $color = "0";
+            $color = "1";
         }
         else {
             $color = $_REQUEST['color'];
