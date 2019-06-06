@@ -72,8 +72,17 @@ webix.ready(function () {
                     }
                 ]
             },
+            // {
+            //     view: "comments",
+            //     currentUser: currentUser,
+            //     data: comments,
+            //     users: users
+            // },
             {
-                view: "kanban", type: "space", id: "myBoard",
+                view: "kanban", 
+                type: "space", 
+                id: "myBoard",
+                // comments: {currentUser: currentUser},
                 on: {
                     onBeforeEditorAction: function (action, editor, data) {
                         webix.message(action);
@@ -125,6 +134,9 @@ webix.ready(function () {
                 ],
                 editor: true,
                 data: getData,
+                comments: {currentUser: currentUser},
+                users: users,
+                // data: comments,
                 colors: [
                     { id: 1, value: "Стандартный", color: "#1CA1C1" },
                     { id: 2, value: "Незначительно", color: "green" },
